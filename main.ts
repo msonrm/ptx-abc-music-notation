@@ -166,10 +166,9 @@ namespace ABCNotation {
      * set meter and tempo
      * @param tempoValue; eg: 120
      */
-    //% blockId=set_tunemeter_and_tempo block="set M(meter) to %meterNote , L(unit note length) to %unitNoteLength , Q(tempo) to ♩= %tempoValue"
+    //% blockId=set_tunemeter_and_tempo block="set L(unit note length) to %unitNoteLength , Q(tempo) to ♩= %tempoValue"
     //% tempoValue.min=4 tempoValue.max=300
-    export function getMeterTempo(meterValue: note2meter, UNL: note2UNL, tempoValue: number): void {
-        tuneMeter = meterValue
+    export function getMeterTempo(UNL: note2UNL, tempoValue: number): void {
         if (UNL != -1) tuneMeter = UNL;
         tuneTempo = tempoValue;
     }
@@ -198,23 +197,33 @@ namespace ABCNotation {
             case "/4": nLength = 0.25; break;
             case "//": nLength = 0.25; break;
             case "3/4": nLength = 0.75; break;
+            case "6/4": nLength = 1.5; break
             case "7/4": nLength = 1.75; break;
             case "1/8": nLength = 0.125; break;
             case "/8": nLength = 0.125; break;
             case "3/8": nLength = 0.375; break;
+            case "6/8": nLength = 0.75; break;
             case "7/8": nLength = 0.875; break;
+            case "12/8": nLength = 1.5; break;
             case "1/16": nLength = 0.0625; break;
             case "/16": nLength = 0.0625; break;
             case "3/16": nLength = 0.1875; break;
             case "7/16": nLength = 0.4375; break;
+            case "12/16": nLength = 0.75; break;
+            case "24/16": nLength = 1.5; break;
             case "1/32": nLength = 0.03125; break;
             case "/32": nLength = 0.03125; break;
             case "3/32": nLength = 0.09375; break;
             case "7/32": nLength = 0.21875; break;
+            case "24/32": nLength = 0.75; break;
+            case "48/32": nLength = 1.5; break;
             case "3/64": nLength = 0.046875; break;
             case "7/64": nLength = 0.109375; break;
+            case "48/64": nLength = 0.75; break;
+            case "96/64": nLength = 1.5; break;
+            default: nLength = 1;
         }
-        noteLength = (60000 / tuneTempo) * (nLength * tuneMeter);
+        noteLength = (60000 / tuneTempo) * (nLength / tuneMeter) * 4; // ?
     }
 
 
