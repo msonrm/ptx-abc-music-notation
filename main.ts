@@ -102,14 +102,6 @@ enum note2meter {
  * table of note2unitNoteLength
  */
 enum note2UNL {
-    //% block="none"
-    none = -1,
-    //% block="1/1"
-    _1_1 = 1,
-    //% block="1/2"
-    _1_2 = 2,
-    //% block="1/4"
-    _1_4 = 4,
     //% block="1/8"
     _1_8 = 8,
     //% block="1/16"
@@ -164,22 +156,33 @@ namespace ABCNotation {
 
     /**
      * set meter and tempo
-     * @param tempoValue; eg: 120
+     * @param tempoValue the tempo, eg: 120
      */
     //% blockId=set_tunemeter_and_tempo block="set L(unit note length) to %unitNoteLength , Q(tempo) to ♩= %tempoValue"
     //% tempoValue.min=4 tempoValue.max=300
     export function getMeterTempo(UNL: note2UNL, tempoValue: number): void {
-        if (UNL != -1) tuneMeter = UNL;
+        tuneMeter = UNL;
         tuneTempo = tempoValue;
     }
 
     /**
-     * Increase tempo
+     * change the tempo by the specified amount
+     * @param tempoValue The change amount, eg: 20
      */
-    //% blockId=change_tempo block="Increase Q(Tempo) %tempoValue"
+    //% blockId=change_tempo block="Change Q(Tempo) by %tempoValue"
     export function changeTempo(tempoValue: number): void {
         tuneTempo = tuneTempo + tempoValue;
     }
+
+    /**
+     * Return the tempo
+     */
+    //% blockId=return_tempo block="Q(Tempo)"
+    export function Tempo(): number {
+        return tuneTempo;
+    }
+
+
 
     function getLength(note: string, noteIndex: number) {
         let nLength: number;
