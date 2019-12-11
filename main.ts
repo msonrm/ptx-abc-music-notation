@@ -173,6 +173,13 @@ namespace ABCNotation {
         tuneTempo = tempoValue;
     }
 
+    /**
+     * Increase tempo
+     */
+    //% blockId=change_tempo block="Increase Q(Tempo) %tempoValue"
+    export function changeTempo(tempoValue: number): void {
+        tuneTempo = tuneTempo + tempoValue;
+    }
 
     function getLength(note: string, noteIndex: number) {
         let nLength: number;
