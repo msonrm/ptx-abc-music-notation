@@ -102,6 +102,8 @@ enum note2meter {
  * table of note2unitNoteLength
  */
 enum note2UNL {
+    //% block="1/4"
+    _1_4 = 8,
     //% block="1/8"
     _1_8 = 8,
     //% block="1/16"
@@ -159,7 +161,7 @@ namespace ABCNotation {
      * @param tempoValue the tempo, eg: 120
      */
     //% blockId=set_tunemeter_and_tempo block="set L(unit note length) to %unitNoteLength , Q(tempo) to ♩= %tempoValue"
-    //% tempoValue.min=4 tempoValue.max=300
+    //% tempoValue.min=4 tempoValue.max=400
     export function getMeterTempo(UNL: note2UNL, tempoValue: number): void {
         tuneMeter = UNL;
         tuneTempo = tempoValue;
