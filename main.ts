@@ -103,7 +103,7 @@ enum note2meter {
  */
 enum note2UNL {
     //% block="1/4"
-    _1_4 = 8,
+    _1_4 = 4,
     //% block="1/8"
     _1_8 = 8,
     //% block="1/16"
