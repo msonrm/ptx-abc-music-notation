@@ -134,7 +134,7 @@ namespace ABCNotation {
     /**
      * set key
      */
-    //% blockId=set_tunekey block="set key to %Key"
+    //% blockId=set_tunekey block="set K(key) to %Key"
     export function setKey(value: Key): void {
         if (value == null) value = Key.C;
         switch (value) {
@@ -241,6 +241,7 @@ namespace ABCNotation {
 
     /**
      * play notes
+     * @param tune play notes, eg:"C D E F G A B c"
      */
     //% blockId=play_notes block="play %Notes"
     //% parts="headphone"
