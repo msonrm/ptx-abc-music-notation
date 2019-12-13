@@ -1,0 +1,7 @@
+{
+  "ABCNotation.setKey|block": "K(調)を%Key|に設定する",
+  "ABCNotation.getMeterTempo|block": "L(1文字の音長) を%unitNoteLength|に、Q(テンポ)を♩= %tempoValue|に設定する",
+  "ABCNotation.changeTempo|block": "Q(テンポ)を%tempoValue|だけ増加させる",
+  "ABCNotation.Tempo|block": "Q(テンポ)",
+  "ABCNotation.playTune|block": "演奏する",
+}
