@@ -130,6 +130,7 @@ namespace ABCNotation {
     let noteKey: number[] = [40, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 63];
     let noteNo: number = 40;
     let noteLength: number = 500;
+    let makeStop: boolean = false;
 
     /**
      * set key
@@ -168,6 +169,79 @@ namespace ABCNotation {
     }
 
     /**
+     * play notes
+     * @param tune play notes, eg:"C D E F G A B c"
+     */
+    //% blockId=play_notes block="play %Notes"
+    //% parts="headphone"
+    export function playTune(tune: string) {
+        makeStop = false;
+        noteKey = tuneKey;
+        let note: string[] = tune.split(' ');
+        note.map(function (note: string, index: number) {
+            noteKey = tuneKey;
+            if (!(note.slice(-1) == "/" || parseInt(note.slice(-1)) != 0)) {
+                note = note + "1"
+            }
+
+            let isEnd = false;
+            for (let pos = 0; pos < note.length; pos++) {
+                let noteElement = note.charAt(pos);
+                if (!isEnd) {
+                    switch (noteElement) {
+                        case "^":
+                            noteKey = noteKey.map(function (value: number, index: number) {
+                                return value + 1;
+                            }); break;
+                        case "_":
+                            noteKey = noteKey.map(function (value: number, index: number) {
+                                return value - 1;
+                            }); break;
+                        case "=": noteKey = [40, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 63]; break;
+                        case "C": noteNo = noteKey[0]; break;
+                        case "D": noteNo = noteKey[1]; break;
+                        case "E": noteNo = noteKey[2]; break;
+                        case "F": noteNo = noteKey[3]; break;
+                        case "G": noteNo = noteKey[4]; break;
+                        case "A": noteNo = noteKey[5]; break;
+                        case "B": noteNo = noteKey[6]; break;
+                        case "c": noteNo = noteKey[7]; break;
+                        case "d": noteNo = noteKey[8]; break;
+                        case "e": noteNo = noteKey[9]; break;
+                        case "f": noteNo = noteKey[10]; break;
+                        case "g": noteNo = noteKey[11]; break;
+                        case "a": noteNo = noteKey[12]; break;
+                        case "b": noteNo = noteKey[13]; break;
+                        case "Z": case "z": noteNo = 0; break;
+                        case "'": noteNo = noteNo + 12; break;
+                        case ",": noteNo = noteNo - 12; break;
+                        case "0": case "1": case "2": case "3": case "4": case "5": case "6": case "7": case "8": case "9": case "/":
+                            getLength(note, pos);
+                            isEnd = true;
+                            break;
+                    }
+                }
+            }
+            if (makeStop == false) {
+                if (noteNo == 0) {
+                    pins.analogPitch(0, noteLength);
+                } else {
+                    pins.analogPitch(noteNo2freq[noteNo], noteLength)
+                }
+            }
+        })
+
+    }
+
+    /**
+     * Stop music
+     */
+    //% blockId=stop_music block="Stop music"
+    export function stop(): void {
+        makeStop = true;
+    }
+
+    /**
      * change the tempo by the specified amount
      * @param tempoValue The change amount, eg: 20
      */
@@ -183,8 +257,6 @@ namespace ABCNotation {
     export function Tempo(): number {
         return tuneTempo;
     }
-
-
 
     function getLength(note: string, noteIndex: number) {
         let nLength: number;
@@ -238,66 +310,4 @@ namespace ABCNotation {
         noteLength = (60000 / tuneTempo) * (nLength / tuneMeter) * 4; // ?
     }
 
-
-    /**
-     * play notes
-     * @param tune play notes, eg:"C D E F G A B c"
-     */
-    //% blockId=play_notes block="play %Notes"
-    //% parts="headphone"
-    export function playTune(tune: string) {
-        noteKey = tuneKey;
-        let note: string[] = tune.split(' ');
-        note.map(function (note: string, index: number) {
-            noteKey = tuneKey;
-            if (!(note.slice(-1) == "/" || parseInt(note.slice(-1)) != 0)) {
-                note = note + "1"
-            }
-
-            let isEnd = false;
-            for (let pos = 0; pos < note.length; pos++) {
-                let noteElement = note.charAt(pos);
-                if (!isEnd) {
-                    switch (noteElement) {
-                        case "^":
-                            noteKey = noteKey.map(function (value: number, index: number) {
-                                return value + 1;
-                            }); break;
-                        case "_":
-                            noteKey = noteKey.map(function (value: number, index: number) {
-                                return value - 1;
-                            }); break;
-                        case "=": noteKey = [40, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 63]; break;
-                        case "C": noteNo = noteKey[0]; break;
-                        case "D": noteNo = noteKey[1]; break;
-                        case "E": noteNo = noteKey[2]; break;
-                        case "F": noteNo = noteKey[3]; break;
-                        case "G": noteNo = noteKey[4]; break;
-                        case "A": noteNo = noteKey[5]; break;
-                        case "B": noteNo = noteKey[6]; break;
-                        case "c": noteNo = noteKey[7]; break;
-                        case "d": noteNo = noteKey[8]; break;
-                        case "e": noteNo = noteKey[9]; break;
-                        case "f": noteNo = noteKey[10]; break;
-                        case "g": noteNo = noteKey[11]; break;
-                        case "a": noteNo = noteKey[12]; break;
-                        case "b": noteNo = noteKey[13]; break;
-                        case "Z": case "z": noteNo = 0; break;
-                        case "'": noteNo = noteNo + 12; break;
-                        case ",": noteNo = noteNo - 12; break;
-                        case "0": case "1": case "2": case "3": case "4": case "5": case "6": case "7": case "8": case "9": case "/":
-                            getLength(note, pos);
-                            isEnd = true;
-                            break;
-                    }
-                }
-            }
-            if (noteNo == 0) {
-                pins.analogPitch(0, noteLength);
-            } else {
-                pins.analogPitch(noteNo2freq[noteNo], noteLength)
-            }
-        })
-
-    }
 }
