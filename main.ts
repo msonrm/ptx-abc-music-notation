@@ -125,7 +125,7 @@ const noteNo2freq: number[] = [0, 28, 29, 31, 33, 35, 37, 39, 41, 44, 46, 49, 52
 //% weight=70 icon="\uf001" color=#D83B01 block="ABC notation"
 namespace ABCNotation {
     let tuneKey: number[] = [40, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 63];
-    let tuneMeter: number = 0.125;
+    let tuneMeter: number = 4;
     let tuneTempo: number = 120;
     let noteKey: number[] = [40, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 63];
     let noteNo: number = 40;
@@ -305,7 +305,7 @@ namespace ABCNotation {
             case "7/64": nLength = 0.109375; break;
             case "48/64": nLength = 0.75; break;
             case "96/64": nLength = 1.5; break;
-            default: nLength = 0.25;
+            default: nLength = 1;
         }
         noteLength = (60000 / tuneTempo) * (nLength / tuneMeter) * 4; // ?
     }
