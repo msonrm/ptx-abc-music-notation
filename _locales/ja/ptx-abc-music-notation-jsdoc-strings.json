@@ -3,5 +3,6 @@
   "ABCNotation.getMeterTempo|block": "L(1文字の音長) を%unitNoteLength|に、Q(テンポ)を♩= %tempoValue|に設定する",
   "ABCNotation.changeTempo|block": "Q(テンポ)を%tempoValue|だけ増加させる",
   "ABCNotation.Tempo|block": "Q(テンポ)",
-  "ABCNotation.play|block":"演奏する%Notes"
+  "ABCNotation.play|block":"演奏する%Notes",
+  "ABCNotation.stop|block": "演奏を停止する"
 }
