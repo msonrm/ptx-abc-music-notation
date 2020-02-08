@@ -189,7 +189,6 @@ namespace ABCNotation {
                 let noteElement = note.charAt(pos);
                 if (!isEnd) {
                     switch (noteElement) {
-                        case " ": noteNo = 0; break;
                         case "^":
                             noteKey = noteKey.map(function (value: number, index: number) {
                                 return value + 1;
