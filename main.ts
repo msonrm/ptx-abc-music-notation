@@ -180,9 +180,9 @@ namespace ABCNotation {
         let note: string[] = tune.split(' ');
         note.map(function (note: string, index: number) {
             noteKey = tuneKey;
-            if (!(note.slice(-1) == "/" || parseInt(note.slice(-1)) != 0)) {
-                note = note + "1"
-            }
+//            if (!(note.slice(-1) == "/" || parseInt(note.slice(-1)) != 0)) {
+//                note = note + "1"
+//            }
 
             let isEnd = false;
             for (let pos = 0; pos < note.length; pos++) {
