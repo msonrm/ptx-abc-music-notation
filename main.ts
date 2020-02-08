@@ -183,7 +183,6 @@ namespace ABCNotation {
             if (!(note.slice(-1) == "/" || parseInt(note.slice(-1)) != 0)) {
                 note = note + "1"
             }
-
             let isEnd = false;
             for (let pos = 0; pos < note.length; pos++) {
                 let noteElement = note.charAt(pos);
