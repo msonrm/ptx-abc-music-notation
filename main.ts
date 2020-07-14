@@ -306,7 +306,7 @@ namespace ABCNotation {
             case "96/64": nLength = 1.5; break;
             default: nLength = 1;
         }
-        noteLength = (60000 / tuneTempo) * (nLength / tuneMeter) * 4; // ?
+        noteLength = ((60000 / tuneTempo) * (nLength / tuneMeter)) * 4; // ?
     }
 
 }
