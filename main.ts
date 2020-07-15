@@ -227,7 +227,6 @@ namespace ABCNotation {
                     pins.analogPitch(0, noteLength);
                 } else {
                     pins.analogPitch(noteNo2freq[noteNo], noteLength);
-//                    pins.analogPitch(0,1);
                 }
             }
         })
