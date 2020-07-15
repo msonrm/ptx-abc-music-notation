@@ -236,7 +236,7 @@ namespace ABCNotation {
     /**
      * Stop music
      */
-    //% weight=70 blockId=stop_music block="Stop music"
+    //% blockGap=14 weight=70 blockId=stop_music block="Stop music"
     export function stop(): void {
         makeStop = true;
     }
