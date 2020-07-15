@@ -135,7 +135,7 @@ namespace ABCNotation {
     /**
      * set key
      */
-    //% blockId=set_tunekey block="set K(key) to %Key"
+    //% weight=100 blockId=set_tunekey block="set K(key) to %Key"
     export function setKey(value: Key): void {
         if (value == null) value = Key.C;
         switch (value) {
