@@ -180,6 +180,7 @@ namespace ABCNotation {
         let note: string[] = tune.split(' ');
         note.map(function (note: string, index: number) {
             noteKey = tuneKey;
+            noteLength = (60000 / (tuneTempo *tuneMeter)) * 4;
             if (!(note.slice(-1) == "/" || parseInt(note.slice(-1)) != 0)) {
                 note = note + "1"
             }
@@ -218,7 +219,6 @@ namespace ABCNotation {
                             getLength(note, pos);
                             isEnd = true;
                             break;
-                        default: noteLength = (60000 / (tuneTempo *tuneMeter)) * 4;
                     }
                 }
             }
