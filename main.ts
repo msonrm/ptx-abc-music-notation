@@ -236,7 +236,7 @@ namespace ABCNotation {
     /**
      * Stop music
      */
-    //% blockId=stop_music block="Stop music"
+    //% weight=70 blockId=stop_music block="Stop music"
     export function stop(): void {
         makeStop = true;
     }
@@ -245,7 +245,7 @@ namespace ABCNotation {
      * change the tempo by the specified amount
      * @param tempoValue The change amount, eg: 20
      */
-    //% blockId=change_tempo block="Change Q(Tempo) by %tempoValue"
+    //% weight=60 blockId=change_tempo block="Change Q(Tempo) by %tempoValue"
     export function changeTempo(tempoValue: number): void {
         tuneTempo = tuneTempo + tempoValue;
     }
@@ -253,7 +253,7 @@ namespace ABCNotation {
     /**
      * Return the tempo
      */
-    //% blockId=return_tempo block="Q(Tempo)"
+    //% weight=50 blockId=return_tempo block="Q(Tempo)"
     export function Tempo(): number {
         return tuneTempo;
     }
