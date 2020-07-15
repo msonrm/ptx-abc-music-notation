@@ -175,6 +175,7 @@ namespace ABCNotation {
     //% blockId=play_notes block="play %Notes"
     //% parts="headphone"
     export function playTune(tune: string) {
+        noteLength = (60000 / (tuneTempo *tuneMeter)) * 4;
         makeStop = false;
         noteKey = tuneKey;
         let note: string[] = tune.split(' ');
