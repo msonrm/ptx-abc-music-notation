@@ -161,7 +161,7 @@ namespace ABCNotation {
      * set meter and tempo
      * @param tempoValue the tempo, eg: 120
      */
-    //% blockId=set_tunemeter_and_tempo block="set L(unit note length) to %unitNoteLength , Q(tempo) to ♩= %tempoValue"
+    //% weight=90 blockId=set_tunemeter_and_tempo block="set L(unit note length) to %unitNoteLength , Q(tempo) to ♩= %tempoValue"
     //% tempoValue.min=4 tempoValue.max=400
     export function getMeterTempo(UNL: note2UNL, tempoValue: number): void {
         tuneMeter = UNL;
@@ -172,7 +172,7 @@ namespace ABCNotation {
      * play notes
      * @param tune play notes, eg:"C D E F G A B c"
      */
-    //% blockId=play_notes block="play %Notes"
+    //% weight=80 blockId=play_notes block="play %Notes"
     //% parts="headphone"
     export function playTune(tune: string) {
         noteLength = (60000 / (tuneTempo *tuneMeter)) * 4;
