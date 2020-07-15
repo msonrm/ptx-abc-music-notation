@@ -172,7 +172,7 @@ namespace ABCNotation {
      * play notes
      * @param tune play notes, eg:"C D E F G A B c"
      */
-    //% blockGap=8 weight=80 blockId=play_notes block="play %Notes"
+    //% blockGap=28 weight=80 blockId=play_notes block="play %Notes"
     //% parts="headphone"
     export function playTune(tune: string) {
         noteLength = (60000 / (tuneTempo *tuneMeter)) * 4;
